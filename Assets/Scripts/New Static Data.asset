@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: New Static Data
   m_EditorClassIdentifier: 
   cubePrefab: {fileID: 4126495167854651790, guid: 8ec85972f48e2ab48acb78ba8b355fc6, type: 3}
+  dailyRewardAmount: 100
