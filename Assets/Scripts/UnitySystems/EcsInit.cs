@@ -21,14 +21,17 @@ public class EcsInit : MonoBehaviour
 
         oneFrameSystems
             .Add(new CubeInitSystem())
+            .Add(new StartGameSystem())
             .Inject(configuration)
             .Inject(sceneData)
             .Inject(ui);
         updateSystems
+            .Add(new ButtonsInitSystem())
             .Add(new AllowCubeToMoveSystem())
             .Add(new CenterCheckSystem())
             .Add(new CubeDestroySystem())
             .Add(new DefeatSystem())
+            .Add(new WinSystem())
             .Inject(configuration)
             .Inject(sceneData)
             .Inject(ui);
@@ -38,8 +41,9 @@ public class EcsInit : MonoBehaviour
             .Inject(configuration)
             .Inject(sceneData)
             .Inject(ui);
-        oneFrameSystems.Init();
+
         updateSystems.Init();
+        oneFrameSystems.Init();
         fixedUpdateSystems.Init();
     }
 

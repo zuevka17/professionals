@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SceneData : MonoBehaviour
@@ -10,5 +11,4 @@ public class SceneData : MonoBehaviour
     public bool isRightCubesMoves = false;
     public bool isUpCubesMoves = false;
     public bool isDownCubesMoves = false;
-
 }

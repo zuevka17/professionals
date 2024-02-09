@@ -3,14 +3,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CubeInitSystem : IEcsInitSystem
+public class CubeInitSystem : IEcsRunSystem
 {
     static bool hasBeenInstantiate = false;
 
     private EcsWorld _ecsWorld = null;
     private StaticData _staticData = null;
     private SceneData _sceneData = null;
-    public void Init()
+    public void Run()
     {   
         if (hasBeenInstantiate)
             return;

@@ -1,6 +1,5 @@
 using Leopotam.Ecs;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DefeatSystem : IEcsRunSystem
 {
@@ -13,7 +12,7 @@ public class DefeatSystem : IEcsRunSystem
         {
             _ui.gameScreenScreenSpace.playButton.image.sprite = Resources.Load<Sprite>("replay");
             _ui.gameScreenScreenSpace.playButton.gameObject.SetActive(true);
-
+            
             Debug.Log("DefeatEvent hapens!");
             _filter.GetEntity(i).Destroy();
         }
