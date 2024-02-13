@@ -1,35 +1,35 @@
 using Leopotam.Ecs;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class CubeInitSystem : IEcsRunSystem
 {
-    static bool hasBeenInstantiate = false;
-
     private EcsWorld _ecsWorld = null;
     private StaticData _staticData = null;
     private SceneData _sceneData = null;
+    private EcsFilter<Cube> _filter = null;
     public void Run()
-    {   
-        if (hasBeenInstantiate)
-            return;
-
-        for(int i = 0; i < 4; i++)
+    {
+        foreach (var i in _filter)
         {
-            //Создаем ecs сущность
+            ref var cube = ref _filter.Get1(i);
+            Object.Destroy(cube.go);
+            ref var entity = ref _filter.GetEntity(i);
+            entity.Destroy();
+        }
+        for (int i = 0; i < _sceneData.levelMassives[_sceneData.currentLevel].Length; i++)
+        {
+            //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ ecs пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             EcsEntity cubeEnity = _ecsWorld.NewEntity();
-
             //GameObject
-            GameObject cubeGO = Object.Instantiate(_staticData.cubePrefab, 
-                _sceneData.spawnPoints[i].position, 
-                _sceneData.spawnPoints[i].rotation.normalized);
+            GameObject cubeGO = Object.Instantiate(_staticData.cubePrefab,
+                _sceneData.levelMassives[_sceneData.currentLevel][i].position + new Vector3(0,0.5f,0),
+                _sceneData.levelMassives[_sceneData.currentLevel][i].rotation.normalized);
 
-            //Компоненет куб
+            //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
             ref var cube = ref cubeEnity.Get<Cube>();
-            //Компонет-флаг разрешающий или запрещающий движение куба
+            //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
             ref var movable = ref cubeEnity.Get<MovableComponent>();
-            //Компонент-маркер
+            //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅ
             switch (_sceneData.spawnPoints[i].name.Remove(_sceneData.spawnPoints[i].name.Length - 1))
             {
                 case "Left":
@@ -48,12 +48,12 @@ public class CubeInitSystem : IEcsRunSystem
 
             cube.go = cubeGO;
 
-            //Запрещаем движение кубу.
+            //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.
             movable.isCanMove = false;
-            //Заполняем поля компонента куба
+            //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
             cube.cubePosition = cubeGO.gameObject.transform;
 
-            cube.distanceToMove = 2.6f;
+            cube.distanceToMove = 3.9f; //or 2.6 for 2x2
             cube.finPoint = new Vector3(cube.cubePosition.position.x + cube.cubePosition.forward.x * cube.distanceToMove, 
                 cube.cubePosition.position.y + cube.cubePosition.forward.y * cube.distanceToMove, 
                 cube.cubePosition.position.z + cube.cubePosition.forward.z * cube.distanceToMove);
@@ -63,6 +63,5 @@ public class CubeInitSystem : IEcsRunSystem
             cube.test = cubeGO.GetComponent<ColliderTest>();
             cube.hasTouched = cube.test.touched;
         }
-        hasBeenInstantiate = true;
     }
 }

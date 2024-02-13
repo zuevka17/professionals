@@ -9,5 +9,7 @@ public class GameScreenScreenSpace : Screens
 
     [Header("Menu Buttons")]
     public Button playButton;
+    public Button audioButon;
     public Button musicButton;
+    public Button dailyRewardButton;
 }

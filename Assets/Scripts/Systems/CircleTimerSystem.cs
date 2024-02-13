@@ -1,6 +1,4 @@
 using Leopotam.Ecs;
-using UnityEngine;
-using UnityEngine.UIElements;
 public class CircleTimerSystem : IEcsRunSystem
 {
     private EcsWorld _world = null;
@@ -14,12 +12,13 @@ public class CircleTimerSystem : IEcsRunSystem
         {
             ref var timerComponent = ref _filter.Get1(1);
 
+            timerComponent.timerImage = _ui.gameScreenScreenSpace.circleTimer;
+
             if (!timerComponent.isGoing)
                 return;
 
-            var timer = _ui.gameScreenScreenSpace.circleTimer;
-            timer.fillAmount -= 0.001f;
-            if (timer.fillAmount <= 0)
+            timerComponent.timerImage.fillAmount -= 0.001f;
+            if (timerComponent.timerImage.fillAmount <= 0)
             {
                 timerComponent.isGoing = false;
                 ref var e = ref _world.NewEntity().Get<DefeatEvent>();

@@ -1,6 +1,4 @@
 using Leopotam.Ecs;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using System;
 
@@ -19,7 +17,7 @@ public class WinSystem : IEcsRunSystem
             ref var winEvent = ref _filter.Get1(1);
             _ui.gameScreenScreenSpace.coinsLable.text = $"{Convert.ToInt32(_ui.gameScreenScreenSpace.coinsLable.text) + _sceneData.rewardForLevel}";
             _filter.GetEntity(i).Destroy();
-            Debug.Log("winEvent happens");
+            Debug.Log("WinEvent hapens");
 
             _filterForTimer.GetEntity(0).Get<TimerComponent>().isGoing = false;
         }

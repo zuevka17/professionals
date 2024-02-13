@@ -1,5 +1,3 @@
-using Leopotam.Ecs;
-using System;
 using UnityEngine;
 
 public class ColliderTest : MonoBehaviour
