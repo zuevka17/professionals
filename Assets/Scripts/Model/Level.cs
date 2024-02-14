@@ -1,16 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-[System.Serializable]
-public class Level : MonoBehaviour
+[Serializable]
+public class Level
 {
-
     public int LevelNumber;
-
-    /*public string LinkToImage;
-    public int CountCubes;
-
-    public List<Cord> Cords;*/
-
+    public int CubesCount;
+    public Coordinates Cords;
 }

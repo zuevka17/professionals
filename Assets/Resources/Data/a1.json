@@ -1,8 +1,22 @@
-[
-  {
-    "LevelNumber": 1
-  },
-  {
-    "LevelNumber": 2
-  }
-]
+{
+  "Items": [
+    {
+      "LevelNumber": 1,
+      "CubesCount": 4,
+      "Cords": {
+        "positions": [
+          {
+            "x": 0.11,
+            "y": 2.25,
+            "z": 84
+          },
+          {
+            "x": 23,
+            "y": 23,
+            "z": 24
+          }
+        ]
+      }
+    }
+  ]
+}
