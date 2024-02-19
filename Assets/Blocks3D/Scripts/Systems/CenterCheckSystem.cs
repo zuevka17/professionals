@@ -4,6 +4,8 @@ public class CenterCheckSystem : IEcsRunSystem
 {
     private EcsWorld _world = null;
     private EcsFilter<Cube, MovableComponent> _filter = null;
+    private SceneData _sceneData = null;
+    private StaticData _staticData = null;
 
     static public int count = 0;
     public void Run()
@@ -17,10 +19,10 @@ public class CenterCheckSystem : IEcsRunSystem
                 count++;
                 movableComponent.Del<MovableComponent>();
             }
-            if (count == 9)
+            if (count == _staticData.levels[_sceneData.currentLevel].CubesCount)
             {
-                ref var winEvent = ref _world.NewEntity().Get<WinEvent>();
                 count = 0;
+                _world.NewEntity().Get<WinEvent>();
             }
         }
     }

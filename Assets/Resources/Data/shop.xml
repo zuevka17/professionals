@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<shop>
+	<amount>100</amount>
+	<price>100</price>
+	<amount>200</amount>
+	<price>200</price>
+	<amount>300</amount>
+	<price>300</price>
+	<amount>400</amount>
+	<price>400</price>
+	<amount>500</amount>
+	<price>500</price>
+</shop>

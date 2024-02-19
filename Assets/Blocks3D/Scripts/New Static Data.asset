@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adeac5db81800f4abe29415c1ff7059, type: 3}
+  m_Name: New Static Data
+  m_EditorClassIdentifier: 
+  cubePrefab: {fileID: 4126495167854651790, guid: 8ec85972f48e2ab48acb78ba8b355fc6, type: 3}
+  dailyRewardAmount: 100
+  rewardForLevel: 10
+  levels:
+  - LevelNumber: 1
+    CubesCount: 4
+    Cords:
+      positions:
+      - {x: 10.29, y: 5.81, z: -29.42}
+      - {x: 9.05, y: 5.81, z: -29.42}
+      - {x: 9.05, y: 5.81, z: -28.12}
+      - {x: 10.29, y: 5.81, z: -28.12}
+    Rotations:
+      rotationAngle:
+      - {x: 0, y: 0, z: 0}
+      - {x: 0, y: 0, z: 0}
+      - {x: 0, y: 0, z: 0}
+      - {x: 0, y: 0, z: 0}
+  - LevelNumber: 2
+    CubesCount: 9
+    Cords:
+      positions:
+      - {x: 8.5, y: 5.81, z: -31.39}
+      - {x: 9.74, y: 5.81, z: -31.39}
+      - {x: 11.11, y: 5.81, z: -31.39}
+      - {x: 4.56, y: 5.81, z: -26.15}
+      - {x: 5.86, y: 5.81, z: -26.15}
+      - {x: 7.13, y: 5.81, z: -26.15}
+      - {x: 8.42, y: 5.81, z: -20.94}
+      - {x: 11.03, y: 5.81, z: -20.94}
+      - {x: 13.74, y: 5.81, z: -24.7}
+    Rotations:
+      rotationAngle:
+      - {x: 0, y: 0, z: 0}
+      - {x: 0, y: 0, z: 0}
+      - {x: 0, y: 0, z: 0}
+      - {x: 0, y: 90, z: 0}
+      - {x: 0, y: 90, z: 0}
+      - {x: 0, y: 90, z: 0}
+      - {x: 0, y: -180, z: 0}
+      - {x: 0, y: -180, z: 0}
+      - {x: 0, y: -90, z: 0}
