@@ -1,7 +1,4 @@
 using Leopotam.Ecs;
-using Leopotam.Ecs.Ui.Components;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace basketball
@@ -19,13 +16,15 @@ namespace basketball
                 ref var swipe = ref _swipeFilter.Get1(1);
 
                 ref var ball = ref _ballFilter.Get1(1);
-                
+
+                ball.BallRigidbody.isKinematic = false;
+                ball.BallRigidbody.useGravity = true;
+
                 ball.BallRigidbody.AddForce(new Vector3(-ball.BallTransform.position.x, 
-                    -ball.BallTransform.position.y * swipe.FinalSpeed * 100,
+                    ball.BallTransform.position.y * (swipe.FinalSpeed * 50),
                     -ball.BallTransform.position.z * swipe.FinalSpeed), 
                     ForceMode.Impulse);
-                
-                ball.BallRigidbody.useGravity = true;
+
 
                 _eventFilter.GetEntity(i).Destroy();
             }

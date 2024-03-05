@@ -1,21 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
+using Leopotam.Ecs;
 using UnityEngine;
 
-public class BallCollision : MonoBehaviour
+namespace basketball
 {
-    private void OnCollisionEnter(Collision collision)
+    public class BallCollision : MonoBehaviour
     {
-        if(collision != null)
+        [SerializeField]private EcsInit world;
+        private void Awake()
         {
-            Debug.Log("wall");
+            world = GameObject.Find("EcsInit").gameObject.GetComponent<EcsInit>();
         }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Basket")
+        private void OnCollisionEnter(Collision collision)
         {
-            Debug.Log("basket");
-        }    
+            if (collision.gameObject.tag == "Wall")
+            {
+                world.World.NewEntity().Get<TouchFloorEvent>();
+                Debug.Log(collision.gameObject.name);
+            }
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag == "Basket")
+            {
+                world.World.NewEntity().Get<GoalEvent>();
+            }
+        }
     }
 }

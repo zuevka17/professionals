@@ -1,7 +1,6 @@
-
 using Leopotam.Ecs;
 using UnityEngine;
-using UnityEngine.Video;
+
 
 namespace basketball 
 {
@@ -13,7 +12,7 @@ namespace basketball
 
         public void Init()
         {
-            var GO = Object.Instantiate(_staticData.BallPrefab, 
+            var GO = Object.Instantiate(_staticData.BallPrefab,
                 _sceneData.SpawnPoint.transform.position, 
                 Quaternion.identity);
 

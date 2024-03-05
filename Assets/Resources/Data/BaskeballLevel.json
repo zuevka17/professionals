@@ -1,0 +1,22 @@
+{
+  "Items": [
+    {
+      "LevelNumber": 1,
+      "Goal": 3,
+      "Time": 30,
+      "Feature": "Standart"
+    },
+    {
+      "LevelNumber": 1,
+      "Goal": 3,
+      "Time": 30,
+      "Feature": "FromSide"
+    },
+    {
+      "LevelNumber": 1,
+      "Goal": 3,
+      "Time": 30,
+      "Feature": "MovingBasket"
+    }
+  ]
+}

@@ -6,5 +6,6 @@ namespace basketball
     public class StaticData : ScriptableObject
     {
         public GameObject BallPrefab;
+        public Level[] Levels;
     }
 }

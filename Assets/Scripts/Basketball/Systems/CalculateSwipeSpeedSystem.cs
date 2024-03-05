@@ -1,6 +1,7 @@
 using Leopotam.Ecs;
 using UnityEngine;
 
+namespace basketball { 
 public class CalculateSwipeSpeed : IEcsRunSystem, IEcsInitSystem
 {
     private EcsWorld _ecsWorld;
@@ -10,36 +11,36 @@ public class CalculateSwipeSpeed : IEcsRunSystem, IEcsInitSystem
         var entity = _ecsWorld.NewEntity();
         ref var swipeComponent = ref entity.Get<SwipeComponent>();
     }
-    public void Run()
-    {
-        foreach (var i in _filter)
+        public void Run()
         {
-            ref var swipeComponent = ref _filter.Get1(i);
-
-            swipeComponent.MaxSpeed = 0.25f;
-
-            if (Input.GetMouseButtonDown(0))
+            foreach (var i in _filter)
             {
-                swipeComponent.StartPos = Input.mousePosition;
-                swipeComponent.StartTime = Time.time;
-            }
-            if (Input.GetMouseButtonUp(0))
-            {
-                swipeComponent.EndPos = Input.mousePosition;
-                swipeComponent.EndTime = Time.time;
+                ref var swipeComponent = ref _filter.Get1(i);
 
-                swipeComponent.DeltaPos = swipeComponent.EndPos.y - swipeComponent.StartPos.y;
-                swipeComponent.DeltaTime = swipeComponent.EndTime - swipeComponent.StartTime;
+                swipeComponent.MaxSpeed = 0.25f;
 
-                swipeComponent.FinalSpeed = swipeComponent.DeltaPos / swipeComponent.DeltaTime / 10000;
-                if(swipeComponent.FinalSpeed > swipeComponent.MaxSpeed)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    swipeComponent.FinalSpeed = swipeComponent.MaxSpeed;
+                    swipeComponent.StartPos = Input.mousePosition;
+                    swipeComponent.StartTime = Time.time;
                 }
+                if (Input.GetMouseButtonUp(0))
+                {
+                    swipeComponent.EndPos = Input.mousePosition;
+                    swipeComponent.EndTime = Time.time;
 
-                Debug.Log($"Time: {swipeComponent.DeltaTime}, Distance:{swipeComponent.DeltaPos}, Speed:{swipeComponent.FinalSpeed}");
+                    swipeComponent.DeltaPos = swipeComponent.EndPos.y - swipeComponent.StartPos.y;
+                    swipeComponent.DeltaTime = swipeComponent.EndTime - swipeComponent.StartTime;
 
-                _ecsWorld.NewEntity().Get<AddForceEvent>();
+                    swipeComponent.FinalSpeed = swipeComponent.DeltaPos / swipeComponent.DeltaTime / 10000;
+                    if (swipeComponent.FinalSpeed > swipeComponent.MaxSpeed)
+                    {
+                        swipeComponent.FinalSpeed = swipeComponent.MaxSpeed;
+                    }
+
+                    _ecsWorld.NewEntity().Get<AddForceEvent>();
+
+                }
             }
         }
     }

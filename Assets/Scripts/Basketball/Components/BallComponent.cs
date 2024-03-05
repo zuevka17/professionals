@@ -1,8 +1,11 @@
 using UnityEngine;
 
-public struct BallComponent
+namespace basketball
 {
-    public GameObject GO;
-    public Transform BallTransform;
-    public Rigidbody BallRigidbody;
+    public struct BallComponent
+    {
+        public GameObject GO;
+        public Transform BallTransform;
+        public Rigidbody BallRigidbody;
+    }
 }
